@@ -63,8 +63,13 @@ This function should use forEach to populate your grocery list based on the stor
 
 const createList = (availableItems) => {
   const myList = [];
-  inventory.forEach(createList);
-};
+  availableItems.forEach(fruitObject => {
+    if (fruitObject.available){
+	    myList.push(fruitObject.name);
+    }
+  return myList
+});
+}
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
@@ -79,26 +84,26 @@ Iterate over the array using forEach to determine the output based on several ru
 
 Return the resulting output array.
 ------------------------------------------------------------------------------------------------ */
-const inputs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
+// const inputs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
 
-const fizzbuzz = (arr) => {
+// const fizzbuzz = (arr) => {
   
-};    
+// };    
 
- 
+console.log('*************** TEST ****************'); 
   
 
-inputs.forEach(fizzbuzz(num) {    
-    if(num % 3 === 0 && num % 5 === 0) {
-    outputArr.push('Fizz Buzz');
-    } else if (num % 3 === 0) {
-    outputArr.push('Fizz');
-    } else if (num % 5 === 0) {
-    outputArr.push('Buzz');
-    } else {
-    outputArr.push(num);
-    };
-  });
+// arr.forEach(fizzbuzz(num) {    
+//     if(num % 3 === 0 && num % 5 === 0) {
+//     outputArr.push('Fizz Buzz');
+//     } else if (num % 3 === 0) {
+//     outputArr.push('Fizz');
+//     } else if (num % 5 === 0) {
+//     outputArr.push('Buzz');
+//     } else {
+//     outputArr.push(num);
+//     };
+//   });
 
 
 
@@ -114,20 +119,20 @@ Run your tests from the console: jest challenges-01.test.js
 
 ------------------------------------------------------------------------------------------------ */
 
-xdescribe('Testing challenge 1', () => {
+describe('Testing challenge 1', () => {
   test('It should return the message with all uppercase characters', () => {
     expect(speaker('hello 301 students!', greeting)).toStrictEqual('HELLO 301 STUDENTS!');
   });
 });
 
-xdescribe('Testing challenge 2', () => {
+describe('Testing challenge 2', () => {
   test('It should add the number 8 to the array five times', () => {
     expect(addNumbers(8, [], 5, addValues)).toStrictEqual([8, 8, 8, 8, 8]);
     expect(addNumbers(8, [], 5, addValues).length).toStrictEqual(5);
   });
 });
 
-xdescribe('Testing challenge 3', () => {
+describe('Testing challenge 3', () => {
   const inventory = [{ name: 'apples', available: true }, { name: 'pears', available: true }, { name: 'oranges', available: false }, { name: 'bananas', available: true }, { name: 'blueberries', available: false }];
 
   test('It should only add the available items to the list', () => {
@@ -136,7 +141,7 @@ xdescribe('Testing challenge 3', () => {
   });
 });
 
-describe('Testing challenge 4', () => {
+xdescribe('Testing challenge 4', () => {
   const inputs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
 
   test('It should print out messages or numbers', () => {
