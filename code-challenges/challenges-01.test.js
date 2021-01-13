@@ -63,13 +63,13 @@ This function should use forEach to populate your grocery list based on the stor
 
 const createList = (availableItems) => {
   const myList = [];
-  availableItems.forEach(fruitObject => {
-    if (fruitObject.available){
-	    myList.push(fruitObject.name);
+  availableItems.forEach(groceryObject => {
+    if(groceryObject.available === true){
+	    myList.push(groceryObject.name);
     }
+  });
   return myList
-});
-}
+};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
@@ -84,26 +84,21 @@ Iterate over the array using forEach to determine the output based on several ru
 
 Return the resulting output array.
 ------------------------------------------------------------------------------------------------ */
-// const inputs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
-
-// const fizzbuzz = (arr) => {
-  
-// };    
-
-console.log('*************** TEST ****************'); 
-  
-
-// arr.forEach(fizzbuzz(num) {    
-//     if(num % 3 === 0 && num % 5 === 0) {
-//     outputArr.push('Fizz Buzz');
-//     } else if (num % 3 === 0) {
-//     outputArr.push('Fizz');
-//     } else if (num % 5 === 0) {
-//     outputArr.push('Buzz');
-//     } else {
-//     outputArr.push(num);
-//     };
-//   });
+const fizzbuzz = (arr) => {
+  const outputArr = [];
+  arr. forEach((num, index, array) => {
+    if(num % 3 === 0 && num % 5 === 0) {
+      outputArr.push('Fizz Buzz');
+    } else if (num % 3 === 0) {
+      outputArr.push('Fizz');
+    } else if (num % 5 === 0) {
+      outputArr.push('Buzz');
+    } else {
+      outputArr.push(num);
+    }
+  });
+  return outputArr;
+};
 
 
 
@@ -141,7 +136,7 @@ describe('Testing challenge 3', () => {
   });
 });
 
-xdescribe('Testing challenge 4', () => {
+describe('Testing challenge 4', () => {
   const inputs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
 
   test('It should print out messages or numbers', () => {
