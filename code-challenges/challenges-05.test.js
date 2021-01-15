@@ -37,8 +37,27 @@ let $ = createSnippetWithJQuery(`
 `);
 
 const templateWithJQuery = () => {
-  // Solution code here...
+  // Solution code here...  
+  const $starWarsTemplate = $('#template').html();
+  starWarsPeople.forEach(person => {    
+    const $createSelectElement = $(`<section>${$starWarsTemplate}</section>`);
+    $('main').append($createSelectElement);
+    $createSelectElement.find('h2').text(person.name);
+    $createSelectElement.find('h3').text(person.height);
+    $createSelectElement.find('p').text(person.eye_color);
+  });  
 }
+
+/*
+1. grab the template element using jQ (line 41)
+2. creat a copy of the template grabbed with $starWarsTemplate (line 43)
+3. append the DOM with copied elements to the newly created section element (line 44)
+4. edit(set) new name to h2 element
+5. edit(set) new height to h3 element
+6. edit(set) new eye_color to p element
+*/
+
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
@@ -245,7 +264,7 @@ describe('Testing challenge 1', () => {
   })
 });
 
-describe('Testing challenge 2', () => {
+xdescribe('Testing challenge 2', () => {
   test('It should return a list of shortening words', () => {
     expect(howMuchPencil('Welcome')).toStrictEqual(['Welcome', 'elcome', 'lcome', 'come', 'ome', 'me', 'e', '']);
     expect(howMuchPencil('Welcome').length).toStrictEqual(8);
@@ -254,7 +273,7 @@ describe('Testing challenge 2', () => {
   });
 });
 
-describe('Testing challenge 3', () => {
+xdescribe('Testing challenge 3', () => {
   test('It should return an array of individual letters', () => {
     expect(wordsToCharList('Gregor')).toStrictEqual(['G', 'r', 'e', 'g', 'o', 'r']);
     expect(wordsToCharList('Gregor').length).toStrictEqual(6);
@@ -263,7 +282,7 @@ describe('Testing challenge 3', () => {
   });
 });
 
-describe('Testing challenge 4', () => {
+xdescribe('Testing challenge 4', () => {
   test('It should return a list of foods', () => {
     expect(listFoods(gruffaloCrumble)).toStrictEqual(['Gruffalo', 'oats', 'brown sugar', 'flour', 'pure maple syrup', 'chopped nuts', 'baking soda', 'baking powder', 'cinnamon', 'melted butter', 'fresh water']);
     expect(listFoods(gruffaloCrumble).length).toStrictEqual(11);
