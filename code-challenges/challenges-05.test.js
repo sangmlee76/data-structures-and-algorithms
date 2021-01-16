@@ -93,6 +93,7 @@ For example, wordsToCharList('gregor') returns ['g','r','e','g','o','r'].
 
 const wordsToCharList = (arr) => {
   // Solution code here...
+  return  arr.split('');  
 };
 
 
@@ -107,6 +108,20 @@ Use slice for this function, maybe more than once. The Array.indexOf() method ma
 
 Do not use split for this function.
 ------------------------------------------------------------------------------------------------ */
+/******************************** Dev Notes ************************************************/
+// Since I am trying to manage my time, I am moving onto my lab and may/may not be able to come back to this in time. Howver, I wanted to jot down my thought on this problem and how I would approach it
+
+/* Expected output: ['Gruffalo', 'oats', 'brown sugar', 'flour', 'pure maple syrup', 'chopped nuts', 'baking soda', 'baking powder', 'cinnamon', 'melted butter', 'fresh water'] */
+
+/* Steps:
+1. gruffaloCrumble is an object with properties, some of which are arrays -- the one I am interested in is ingredients property
+2. ingredient data structure is 3 parts: quantity (numeric) + unit of measure + ingredient (food item as a single entity (regardless of single or compound words)
+3. If I were to group these loosely, the quantity takes index = 0, the unit of measure takes index = 1, the ingredient takes index = 2
+4. TODO: figure out how to slice at the second space and then grab everything after that, then push that into the results array.
+
+/*******************************************************************************************/
+
+
 
 const gruffaloCrumble = {
   name: 'How to make a Gruffalo Crumble',
@@ -260,7 +275,7 @@ Run your tests from the console: jest challenges-05.test.js
 
 ------------------------------------------------------------------------------------------------ */
 
-xdescribe('Testing challenge 1', () => {
+describe('Testing challenge 1', () => {
   test('It should append the star wars people to the DOM', () => {
     templateWithJQuery();
     expect($('section:nth-child(2) h2').text()).toStrictEqual('Luke Skywalker');
@@ -278,7 +293,7 @@ describe('Testing challenge 2', () => {
   });
 });
 
-xdescribe('Testing challenge 3', () => {
+describe('Testing challenge 3', () => {
   test('It should return an array of individual letters', () => {
     expect(wordsToCharList('Gregor')).toStrictEqual(['G', 'r', 'e', 'g', 'o', 'r']);
     expect(wordsToCharList('Gregor').length).toStrictEqual(6);
