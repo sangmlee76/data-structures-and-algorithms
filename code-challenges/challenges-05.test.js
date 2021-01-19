@@ -41,10 +41,11 @@ const templateWithJQuery = () => {
   const $starWarsTemplate = $('#template').html();
   starWarsPeople.forEach(person => {    
     const $createSelectElement = $(`<section>${$starWarsTemplate}</section>`);
-    $('main').append($createSelectElement);
+    // $('main').append($createSelectElement);
     $createSelectElement.find('h2').text(person.name);
-    $createSelectElement.find('h3').text(person.height);
+    $createSelectElement.find('h3').text(person.height); 
     $createSelectElement.find('p').text(person.eye_color);
+    $('main').append($createSelectElement);
   });  
 }
 
@@ -284,7 +285,7 @@ describe('Testing challenge 1', () => {
   })
 });
 
-describe('Testing challenge 2', () => {
+xdescribe('Testing challenge 2', () => {
   test('It should return a list of shortening words', () => {
     expect(howMuchPencil('Welcome')).toStrictEqual(['Welcome', 'elcome', 'lcome', 'come', 'ome', 'me', 'e', '']);
     expect(howMuchPencil('Welcome').length).toStrictEqual(8);
@@ -293,7 +294,7 @@ describe('Testing challenge 2', () => {
   });
 });
 
-describe('Testing challenge 3', () => {
+xdescribe('Testing challenge 3', () => {
   test('It should return an array of individual letters', () => {
     expect(wordsToCharList('Gregor')).toStrictEqual(['G', 'r', 'e', 'g', 'o', 'r']);
     expect(wordsToCharList('Gregor').length).toStrictEqual(6);
