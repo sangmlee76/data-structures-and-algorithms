@@ -128,7 +128,6 @@ const hasChildrenValues = (arr, character) => {
   let output = false;
   arr.forEach(person => {
     const valueArray = Object.values(person);
-    console.log('***********', valueArray)
     if(valueArray[0] === character && valueArray[2].length > 0){
       output = true;
     }
