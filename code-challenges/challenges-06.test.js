@@ -125,29 +125,16 @@ hasChildrenValues(characters, 'Sansa') will return false
 
 const hasChildrenValues = (arr, character) => {
   // Solution code here...
+  let output = false;
   arr.forEach(person => {
     const valueArray = Object.values(person);
-    console.log('***********', valueArray)
-    if(valueArray[0] !== character){
-      return;
-    } else if(valueArray[2][0]){
-        console.log('#############', valueArray[2][0]);
-        return true;
-      } else{
-        return false;
-      } 
+    if(valueArray[0] === character && valueArray[2].length > 0){
+      output = true;
+    }
   });
+  return output;
 }; 
     
-  //   const targetIndex = valueArray.indexOf(character);
-  //   if (valueArray[targetIndex]){
-  //     return true;
-  //   } else{
-  //     return false;
-  //   }
-  // });
-// };
-
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5 - Stretch Goal
