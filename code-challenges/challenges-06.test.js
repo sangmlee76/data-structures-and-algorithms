@@ -127,14 +127,27 @@ const hasChildrenValues = (arr, character) => {
   // Solution code here...
   arr.forEach(person => {
     const valueArray = Object.values(person);
-    const targetIndex = valueArray.indexOf(character);
-    if (valueArray[targetIndex]){
-      return true;
-    } else{
-      return false;
-    }
+    console.log('***********', valueArray)
+    if(valueArray[0] !== character){
+      return;
+    } else if(valueArray[2][0]){
+        console.log('#############', valueArray[2][0]);
+        return true;
+      } else{
+        return false;
+      } 
   });
-};
+}; 
+    
+  //   const targetIndex = valueArray.indexOf(character);
+  //   if (valueArray[targetIndex]){
+  //     return true;
+  //   } else{
+  //     return false;
+  //   }
+  // });
+// };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5 - Stretch Goal
