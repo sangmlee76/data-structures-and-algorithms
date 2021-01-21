@@ -195,6 +195,10 @@ Note: You may not use the array's built-in length property.
 
 const countNumberOfElements = (arr) => {
   // Solution code here...
+  const outputArr = arr.reduce(accumulator => {
+    return accumulator + 1;
+  }, 0);
+  return outputArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -423,7 +427,7 @@ DO NOT CHANGE any of the below code.
 Run your tests from the console: jest challenges-09.test.js
 ------------------------------------------------------------------------------------------------ */
 
-describe('Testing challenge 1', () => {
+xdescribe('Testing challenge 1', () => {
   test('It should return an array of object instances with a key of author', () => {
     expect(mapCurrentEvents()[0].author).toStrictEqual("go");
   });
@@ -456,7 +460,7 @@ describe('Testing challenge 1', () => {
   });
 });
 
-xdescribe('Testing challenge 2', () => {
+describe('Testing challenge 2', () => {
   test('It should return the length of the array', () => {
     expect(countNumberOfElements([1, 2, 3, 4, 5])).toStrictEqual(5);
   });
