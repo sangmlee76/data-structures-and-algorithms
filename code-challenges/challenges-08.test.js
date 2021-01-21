@@ -57,10 +57,12 @@ The callback function to filter should include or utilize a regular expression p
 For example, filterStringsWithVowels('gregor','hound','xyz') returns ['gregor', 'hound'].
 ------------------------------------------------------------------------------------------------ */
 
+//hint: try [aeiou]
 
 const filterStringsWithVowels = (arr) => {
   // Solution code here...
 };
+
 
 
 /* ------------------------------------------------------------------------------------------------
@@ -70,6 +72,8 @@ Write a function named notInFirstArray that, given two arrays as input, uses fil
 
 For example, notInFirstArray([1,2,3], [1,2,3,4]) returns [4].
 ------------------------------------------------------------------------------------------------ */
+
+//hint: try .includes()
 
 const notInFirstArray = (forbiddenValues, arr) => {
   // Solution code here...
@@ -206,7 +210,7 @@ Run your tests from the console: jest challenges-08.test.js
 
 ------------------------------------------------------------------------------------------------ */
 
-xdescribe('Testing challenge 1', () => {
+describe('Testing challenge 1', () => {
 
   const request = require('supertest');
 
