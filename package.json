@@ -16,6 +16,7 @@
     "express": "^4.17.1",
     "jest": "^26.0.1",
     "mustache": "^4.0.1",
+    "superagent": "^6.1.0",
     "supertest": "^4.0.2"
   }
 }
