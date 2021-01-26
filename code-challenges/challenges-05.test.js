@@ -37,16 +37,16 @@ let $ = createSnippetWithJQuery(`
 `);
 
 const templateWithJQuery = () => {
-  // Solution code here...  
+  // Solution code here...
   const $starWarsTemplate = $('#template').html();
-  starWarsPeople.forEach(person => {    
+  starWarsPeople.forEach(person => {
     const $createSelectElement = $(`<section>${$starWarsTemplate}</section>`);
     // $('main').append($createSelectElement);
     $createSelectElement.find('h2').text(person.name);
-    $createSelectElement.find('h3').text(person.height); 
+    $createSelectElement.find('h3').text(person.height);
     $createSelectElement.find('p').text(person.eye_color);
     $('main').append($createSelectElement);
-  });  
+  });
 }
 
 /*
@@ -94,7 +94,7 @@ For example, wordsToCharList('gregor') returns ['g','r','e','g','o','r'].
 
 const wordsToCharList = (arr) => {
   // Solution code here...
-  return  arr.split('');  
+  return  arr.split('');
 };
 
 
@@ -122,7 +122,7 @@ Do not use split for this function.
 
 /*******************************************************************************************/
 
-
+// TODO: bookmark
 
 const gruffaloCrumble = {
   name: 'How to make a Gruffalo Crumble',
