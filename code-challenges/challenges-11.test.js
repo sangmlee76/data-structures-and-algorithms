@@ -27,6 +27,7 @@ If the PIN is four numerical digits long, return true. Otherwise, return false.
 
 const validatePin = (pin) => {
   // Solution code here...
+
 };
 
 /* ------------------------------------------------------------------------------------------------
