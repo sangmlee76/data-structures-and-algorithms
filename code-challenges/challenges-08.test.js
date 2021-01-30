@@ -91,6 +91,7 @@ const notInFirstArray = (forbiddenValues, arr) => {
 
 //Note-2: From my understanding of the code: the order of the array input matters! The way the code breaks down in plain English - you look at the larger array, you filter it using the information from the smaller array, once you identify the difference, place the different elements into an output array and return the solution. In more detail, this is implemented by applying the .filter() method to the larger array -- this will automatically create an output array for the elements that it will filter through the comparison code. Using the .filter() method, as we iterate through each element in the larger array (in our case arr), we compare it to the elements in the smaller array (in our case forbiddenValues) and see if they match -- the matching is done by the .includes() method on the smaller element -- essentially, the code is assessing: does forbiddenValues array inclue this element 'value' from the arr array? If yes, then that element 'value' is stored into the output array (as per .filter() method).
 
+//TEST TEST TEST
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5 - Stretch Goal
