@@ -41,7 +41,9 @@ const firstLetters = (arr) => {
   return outputArr;
 };
 
-/* ------------------------------------------------------------------------------------------------
+/* .-60.3
+.
+0.-----------------------------------------------------------------------------------------------
 CHALLENGE 3
 
 Write a function named findHappiness that takes in an array of strings and returns an array containing only the strings from the input array that contain ":)".
@@ -51,6 +53,13 @@ For example, ['this is great :)', 'wow', 'whyyyyyy :(', ':)))))'] returns ['this
 
 const findHappiness = (arr) => {
   // Solution code here...
+  const output = arr.reduce((acc, curr) => {
+    if(curr.includes(':)')){
+      acc.push(curr);
+    }
+    return acc;
+  },[]);
+  return output;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -63,7 +72,14 @@ For example, (123) 456-7890 returns 1234567890
 
 const standardizePhoneNumbers = (arr) => {
   // Solution code here...
+  const outputArray = [];
+  const standardized = /[0-9]/g;
+  arr.forEach(num => {
+     outputArray.push(num.match(standardized).join(''));
+  })
+    return outputArray
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5 - Stretch Goal
@@ -173,7 +189,7 @@ Run your tests from the console: jest challenges-13.test.js
 
 ------------------------------------------------------------------------------------------------ */
 
-xdescribe('Testing challenge 1', () => {
+describe('Testing challenge 1', () => {
   test('It should return markup with typo fixed', () => {
     fixTheTypo();
 
@@ -181,7 +197,7 @@ xdescribe('Testing challenge 1', () => {
   });
 });
 
-xdescribe('Testing challenge 2', () => {
+describe('Testing challenge 2', () => {
   test('It should return the first letter of each element of the array', () => {
     const words = ['apple', 'banana', 'cantaloupe'];
 
@@ -202,7 +218,7 @@ describe('Testing challenge 3', () => {
   });
 });
 
-xdescribe('Testing challenge 4', () => {
+describe('Testing challenge 4', () => {
   test('It should return a standardized set of phone numbers', () => {
     const nums = ['(123) 456-7890', '(222) 222-2222'];
 
