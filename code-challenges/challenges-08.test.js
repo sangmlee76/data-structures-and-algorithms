@@ -71,6 +71,7 @@ const filterStringsWithVowels = (arr) => {
 
 //Note: collaborated with Carly Dekock
 
+
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
 
@@ -79,13 +80,17 @@ Write a function named notInFirstArray that, given two arrays as input, uses fil
 For example, notInFirstArray([1,2,3], [1,2,3,4]) returns [4].
 ------------------------------------------------------------------------------------------------ */
 
-//hint: try .includes()
+
 
 const notInFirstArray = (forbiddenValues, arr) => {
   // Solution code here...
+  return arr.filter(value => !forbiddenValues.includes(value));
 };
 
-//Note: collaborated with Carly Dekock
+//Note-1: obtained help from web resource: https://medium.com/@alvaro.saburido/set-theory-for-arrays-in-es6-eb2f20a61848 on understanding the logic behind 'array difference' where the arrays are non-symmetric.
+
+//Note-2: From my understanding of the code: the order of the array input matters! The way the code breaks down in plain English - you look at the larger array, you filter it using the information from the smaller array, once you identify the difference, place the different elements into an output array and return the solution. In more detail, this is implemented by applying the .filter() method to the larger array -- this will automatically create an output array for the elements that it will filter through the comparison code. Using the .filter() method, as we iterate through each element in the larger array (in our case arr), we compare it to the elements in the smaller array (in our case forbiddenValues) and see if they match -- the matching is done by the .includes() method on the smaller element -- essentially, the code is assessing: does forbiddenValues array inclue this element 'value' from the arr array? If yes, then that element 'value' is stored into the output array (as per .filter() method).
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5 - Stretch Goal
@@ -266,7 +271,7 @@ describe('Testing challenge 3', () => {
   });
 });
 
-xdescribe('Testing challenge 4', () => {
+describe('Testing challenge 4', () => {
   const firstNums = [1, 2, 3];
   const secondNums = [1, 2, 3, 4];
 
