@@ -16,16 +16,26 @@ const createServer = () => {
   app.use(cors());
 
   app.get('/aboutme', getAboutMe);
-  app.get('hello', getHello);
-  app.get('favoritefoods', getFavoriteFoods);
+  app.get('/hello', getHello);
+  app.get('/favoritefoods', getFavoriteFoods);
+
+  function getAboutMe(req, res){
+    res.send('My Name is Sang. I live in Seattle. I grew up in Virginia.');
+  }
+
+  function getHello(req, res){
+    res.send('Howdy');
+  }
+
+  function getFavoriteFoods(req, res){
+    const favoriteDish = ['fried chicken', 'steak', 'poke bowl', '70% dark chocolate', 'coffee/tea']
+    res.send(favoriteDish);
+  }
 
 
   var server = app.listen(3301, function () {
     var port = server.address().port;
     console.log('Example app listening at port', port);
-
-
-
 
 
   });
@@ -44,9 +54,30 @@ For example, count(5, [[1, 3, 5, 7, 9], [5, 5, 5], [1, 2, 3]]) returns 4.
 
 const count = (target, input) => {
   // Solution code here...
-  const result = input.filter(5);
-  return console.log(result)
+  // ***** Unchained version ***** //
+  // const flatArray = input.reduce((acc, curr) => {
+  //   return acc.concat(curr);
+  // }, [])
+
+  // return flatArray.filter(number => {
+  //   return number === target;
+  // }).length;
+
+  // ***** Chained version ****** //
+  const flatArray = input.reduce((acc, curr) => {
+    return acc.concat(curr);
+  }, []).filter(number => {
+    return number === target;
+  }).length;
+
+  return flatArray;
 };
+
+
+
+
+
+//Note: got help from web resource: https://www.freecodecamp.org/news/how-to-count-objects-in-an-array/
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
@@ -60,6 +91,13 @@ For example, [[1, 2, 3, 4, 5], [6, 7, 2, 4, 5, 7], [9, 2, 3, 6,]] returns 66.
 
 const totalSum = (input) => {
   // Solution code here...
+  const flatArray = input.reduce((acc, curr) =>{
+    return acc.concat(curr);
+  }, []).reduce((acc, curr) => {
+    return acc + curr;
+  });
+
+  return flatArray;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -76,6 +114,9 @@ For example, [ [0,2,5,4], [2,4,10], [] ] should return [ [1, 32], [1024], [] ].
 
 const divisibleByFiveTwoToThePower = (input) => {
   // Solution code here...
+  input.filter(number => {
+    return (number % 5 === 0)
+  })
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -165,7 +206,7 @@ Run your tests from the console: jest challenges-10.test.js
 
 ------------------------------------------------------------------------------------------------ */
 
-describe('Testing challenge 1', () => {
+xdescribe('Testing challenge 1', () => {
 
   const request = require('supertest');
 
@@ -204,7 +245,7 @@ describe('Testing challenge 1', () => {
   });
 });
 
-describe('Testing challenge 2', () => {
+xdescribe('Testing challenge 2', () => {
   test('It should return the number of times the input is in the nested arrays', () => {
     expect(count(5, [[1, 3, 5, 7, 9], [5, 5, 5], [1, 2, 3]])).toStrictEqual(4);
     expect(count(3, [[1, 3, 5, 7, 9], [5, 5, 5], [1, 2, 3]])).toStrictEqual(2);
@@ -224,7 +265,7 @@ describe('Testing challenge 3', () => {
   });
 });
 
-describe('Testing challenge 4', () => {
+xdescribe('Testing challenge 4', () => {
   test('It should return numbers divisible by five, then raise two to the power of the resulting numbers', () => {
     expect(divisibleByFiveTwoToThePower([[10, 20, 5, 4], [5, 6, 7, 9], [1, 10, 3]])).toStrictEqual([[1024, 1048576, 32], [32], [1024]]);
   });
