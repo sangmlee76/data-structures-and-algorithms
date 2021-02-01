@@ -289,6 +289,8 @@ const reversedString = (str) => {
   return outputArr.join('');
 };
 
+//Note: obtained help from this resource: https://www.javascripttutorial.net/javascript-array-reduce/
+
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5 - Stretch Goal
 
