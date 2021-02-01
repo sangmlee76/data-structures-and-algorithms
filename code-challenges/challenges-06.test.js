@@ -71,11 +71,18 @@ let $ = createSnippetWithJQuery(`
 
 const templatingWithMustache = () => {
   // Solution code here...
+  const outputArray = []
+  characters.forEach(character => {
+    const htmlString = $('#template').html();
+    const renderedHtml = Mustache.render(htmlString, character);
+    outputArray.push(renderedHtml);
+    //if the above script tag was inside <ul> we would add: $('ul').append(renderedHtml); to complete the appending of the DOM --> this was explicitly stated to exclude from this testing.
+  });
 
-
-
-  return
+  return outputArray;
 };
+
+//Note: on the 19 Jan submission, this test was incomplete. I had only completed 3 out of 4 tests sucessfully when resubmitting. This was successfully completed on 1 Feb.
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
