@@ -207,7 +207,6 @@ CHALLENGE 3
 Write a function named returnNames that, given the Star Wars data, below, uses reduce to return an array containing the names of the characters.
 ------------------------------------------------------------------------------------------------ */
 
-//TODO: Bookmark
 
 let starWarsData = [{
   name: 'Luke Skywalker',
@@ -262,7 +261,15 @@ let starWarsData = [{
 
 const returnNames = (arr) => {
   // Solution code here...
+  const characterArray = arr.reduce((acc, curr) => {
+    acc.push(curr.name);
+
+    return acc;
+  }, []);
+  return characterArray;
 };
+
+//Note: got help on accumulator.push() from resource: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
@@ -274,6 +281,12 @@ Note: You must use reduce for this challenge. You may not use the built-in .reve
 
 const reversedString = (str) => {
   // Solution code here...
+  const stringArr = str.split('');
+  const outputArr = stringArr.reduceRight((acc, curr) => {
+    acc.push(curr);
+    return acc;
+  }, []);
+  return outputArr.join('');
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -429,7 +442,7 @@ DO NOT CHANGE any of the below code.
 Run your tests from the console: jest challenges-09.test.js
 ------------------------------------------------------------------------------------------------ */
 
-xdescribe('Testing challenge 1', () => {
+describe('Testing challenge 1', () => {
   test('It should return an array of object instances with a key of author', () => {
     expect(mapCurrentEvents()[0].author).toStrictEqual("go");
   });
@@ -468,14 +481,14 @@ describe('Testing challenge 2', () => {
   });
 });
 
-xdescribe('Testing challenge 3', () => {
+describe('Testing challenge 3', () => {
   test('It should return an array continaing the names of the characters', () => {
     expect(returnNames(starWarsData)).toStrictEqual(['Luke Skywalker', 'C-3PO', 'R2-D2', 'Darth Vader', 'Leia Organa']);
     expect(returnNames(starWarsData).length).toStrictEqual(5);
   });
 });
 
-xdescribe('Testing challenge 4', () => {
+describe('Testing challenge 4', () => {
   test('It should return the string with the characters in reverse order', () => {
     expect(reversedString('Code 301')).toStrictEqual('103 edoC');
   });
