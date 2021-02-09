@@ -114,18 +114,18 @@ For example, [ [0,2,5,4], [2,4,10], [] ] should return [ [1, 32], [1024], [] ].
 
 const divisibleByFiveTwoToThePower = (input) => {
   // Solution code here...
-  const outputArr1 = [];
-  input.forEach(array => {
-    outputArr1.push(array.filter(number => {
-      return number % 5 === 0;
-    }));
+  let filteredList = input.map(inputList => {
+    return inputList.filter(number => {
+      return number % 5 === 0 && typeof number === 'number';
+    })
   })
-  const outputArr2 = [];
-  outputArr1.forEach(array => {
-    outputArr2.push(array.map(number =>
-      Math.pow(2, number)));
+
+  let results = filteredList.map(numberList => {
+    return numberList.map(number => {
+      return Math.pow(2, number);
+    })
   })
-  return outputArr2;
+    return results;
 }
 
 // Note: this worked on repl.it when passed in an array of strings by returning empty arrays, but it's not passing through the test provided here.  My repl.it ref: https://repl.it/@sanglee76/codechal10
