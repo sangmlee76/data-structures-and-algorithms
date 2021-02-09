@@ -92,7 +92,7 @@ Return either true or false.
 
 const validatePhoneNumber = (phoneNumber) => {
   // Solution code here...
-  const regex = /^\(?([0-9]{3})\)?[-|\s]?([0-9]{3})[-|\s]?([0-9]{4})$/g;
+  const regex = /^(\(([0-9]{3})\)|([0-9]{3}))[-|\s]?([0-9]{3})[-|\s]?([0-9]{4})$/gm;
   const phoneNumberChecker = phoneNumber.match(regex);
   if (phoneNumberChecker) {
     return true;
@@ -101,9 +101,17 @@ const validatePhoneNumber = (phoneNumber) => {
   }
 };
 
-//verson 3: ^\(?([0-9]{3})\)?[-|\s]?([0-9]{3})[-|\s]?([0-9]{4})$ (referenced from: https://www.oreilly.com/library/view/regular-expressions-cookbook/9781449327453/ch04s02.html)
+// version 4: /^(\(([0-9]{3})\)|([0-9]{3}))[-|\s]?([0-9]{3})[-|\s]?([0-9]{4})$/gm
+//verson 3: /^\(?([0-9]{3})\)?[-|\s]?([0-9]{3})[-|\s]?([0-9]{4})$/gm (referenced from: https://www.oreilly.com/library/view/regular-expressions-cookbook/9781449327453/ch04s02.html)
 //version 2: ^(((\d\d\d))|\d\d\d)(\s|-)?(\d\d\d)(\s|-)?(\d\d\d\d) -- best option, catches everything except the (xxx) xxx-xxxx format
 //version 1: ((?:\(\d+\)+\s\d+\-\d+) or \d+(?:-|\s|\))
+
+// key takeaways for using regex:
+// use parenthesis to group arguments that you want to focus/capture
+// breakdown the target/search into sections that can be placed into parenthesis
+// when testing using regex tools, use / /gm (global and multiline) to use ^ and $ (at the start and ending, respectively), if there is multiple test scenarios being tested -- to put it more simply, put each test scenario on each individual line and then use /gm (not /g) for the post script setting.
+// ? = different than (?:), it looks at the previous argument and asks a 0 or 1 (boolean) (e.g. whether the argument is true or not -- \(\d{3}\)? accepts BOTH (555) and (555 because it's asking to take situations where there exists the closing parenthesis and ones without it.)
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5 - Stretch Goal
