@@ -14,7 +14,7 @@ You can assume that neither firstName nor lastName will be blank
 const toLastNames = people => {
   // Solution code here...
   const nameArr = people.map(person => `${person.firstName} ${person.lastName}`);
-  return(nameArr);
+  return (nameArr);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -27,8 +27,15 @@ If the PIN is four numerical digits long, return true. Otherwise, return false.
 
 const validatePin = (pin) => {
   // Solution code here...
-
+  const pinValidator = /\d{4}/g;
+  const pinChecker = pin.match(pinValidator);
+  if (pin.length < 5 && pinChecker) {  //this is not right....
+    return true;
+  } else {
+    return false;
+  }
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
@@ -48,6 +55,8 @@ Note: if you ever need to validate an email using a regex in practice, the Inter
 
 const validateEmail = (email) => {
   // Solution code here...
+
+
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -98,7 +107,7 @@ DO NOT CHANGE any of the below code.
 Run your tests from the console: jest solutions-11.test.js
 ------------------------------------------------------------------------------------------------ */
 
-describe('Testing challenge 1', () => {
+xdescribe('Testing challenge 1', () => {
   test('It should convert object to full name string', () => {
 
     const people = [{ firstName: "Jane", lastName: "Doe" }, { firstName: "James", lastName: "Bond" }];
@@ -108,7 +117,7 @@ describe('Testing challenge 1', () => {
   });
 });
 
-xdescribe('Testing challenge 2', () => {
+describe('Testing challenge 2', () => {
   test('It should validate a PIN of exactly four digits', () => {
     expect(validatePin(1234)).toBeTruthy();
     expect(validatePin(123)).toBeFalsy();
