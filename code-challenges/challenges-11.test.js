@@ -27,15 +27,17 @@ If the PIN is four numerical digits long, return true. Otherwise, return false.
 
 const validatePin = (pin) => {
   // Solution code here...
-  const pinValidator = /\d{4}/g;
-  const pinChecker = pin.match(pinValidator);
-  if (pin.length < 5 && pinChecker) {  //this is not right....
+  const stringifiedPin = pin.toString();
+  const pinValidator = /\d{4,4}/g;
+  const pinChecker = stringifiedPin.match(pinValidator);
+  if (stringifiedPin.length < 5 && pinChecker) {
     return true;
   } else {
     return false;
   }
 };
 
+// the trick here is to convert the input, which is a number, to a string type
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
@@ -55,9 +57,17 @@ Note: if you ever need to validate an email using a regex in practice, the Inter
 
 const validateEmail = (email) => {
   // Solution code here...
+  const regex = /^\w+?(.\w+)(@)\w+((.com)|(.net)|(.org))\b/gm;
+  const emailChecker = email.match(regex);
+  if (emailChecker) {
+      return true;
+    } else {
+      return false;
+    }
+  };
 
-
-};
+// closest I can get building from scratch: (\w+.{1}\w+)\b@(\w+\.{1}\w+)
+// Received help from TA (Adrian H.): /^\w+?(.\w+)(@)\w+((.com)|(.net)|(.org))\b/gm
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
@@ -82,7 +92,18 @@ Return either true or false.
 
 const validatePhoneNumber = (phoneNumber) => {
   // Solution code here...
+  const regex = /^\(?([0-9]{3})\)?[-|\s]?([0-9]{3})[-|\s]?([0-9]{4})$/g;
+  const phoneNumberChecker = phoneNumber.match(regex);
+  if (phoneNumberChecker) {
+    return true;
+  } else {
+    return false;
+  }
 };
+
+//verson 3: ^\(?([0-9]{3})\)?[-|\s]?([0-9]{3})[-|\s]?([0-9]{4})$ (referenced from: https://www.oreilly.com/library/view/regular-expressions-cookbook/9781449327453/ch04s02.html)
+//version 2: ^(((\d\d\d))|\d\d\d)(\s|-)?(\d\d\d)(\s|-)?(\d\d\d\d) -- best option, catches everything except the (xxx) xxx-xxxx format
+//version 1: ((?:\(\d+\)+\s\d+\-\d+) or \d+(?:-|\s|\))
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5 - Stretch Goal
@@ -107,7 +128,7 @@ DO NOT CHANGE any of the below code.
 Run your tests from the console: jest solutions-11.test.js
 ------------------------------------------------------------------------------------------------ */
 
-xdescribe('Testing challenge 1', () => {
+describe('Testing challenge 1', () => {
   test('It should convert object to full name string', () => {
 
     const people = [{ firstName: "Jane", lastName: "Doe" }, { firstName: "James", lastName: "Bond" }];
@@ -130,7 +151,7 @@ describe('Testing challenge 2', () => {
   });
 });
 
-xdescribe('Testing challenge 3', () => {
+describe('Testing challenge 3', () => {
   test('It should match a basic email', () => {
     expect(validateEmail('joe@codefellows.com')).toBeTruthy();
   });
@@ -160,7 +181,7 @@ xdescribe('Testing challenge 3', () => {
   });
 });
 
-xdescribe('Testing challenge 4', () => {
+describe('Testing challenge 4', () => {
   test('It should match the acceptable phone number formats', () => {
     expect(validatePhoneNumber('(555) 555-5555')).toBeTruthy();
     expect(validatePhoneNumber('555 555-5555')).toBeTruthy();
