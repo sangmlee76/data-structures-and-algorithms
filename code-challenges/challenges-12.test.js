@@ -10,6 +10,15 @@ E.g. [4,2,7,5,9,2] -> 9
 ------------------------------------------------------------------------------------------------ */
 const maxInArray = (arr) => {
   // Solution code here...
+  const maxValue = arr.reduce((arr, curr) => {
+    if (curr > arr){
+      arr = curr;
+    } else{
+      arr = arr;
+    }
+    return arr;
+  });
+  return maxValue;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -26,18 +35,26 @@ Return the array of the total number of cookies sold per hour for all of the sto
 
 const hoursOpen = ['9 a.m.', '10 a.m.', '11 a.m.', '12 p.m.', '1 p.m.', '2 p.m.', '3 p.m.', '4 p.m.', '5 p.m.', '6 p.m.', '7 p.m.', '8 p.m.'];
 
-const firstPike = [17, 18, 23, 24, 24, 12, 13, 27, 30, 20, 24, 18];
-const seaTac = [26, 5, 5, 59, 23, 39, 38, 20, 30, 7, 59, 43];
-const seattleCenter = [7, 14, 19, 22, 15, 4, 23, 27, 28, 23, 1, 29];
-const capHill = [5, 85, 58, 51, 50, 13, 33, 32, 47, 94, 31, 62];
-const alkiBeach = [33, 31, 147, 130, 27, 93, 38, 126, 141, 63, 46, 17];
+const firstPike =       [17, 18, 23, 24, 24, 12, 13, 27, 30, 20, 24, 18];
+const seaTac =          [26, 5, 5, 59, 23, 39, 38, 20, 30, 7, 59, 43];
+const seattleCenter =   [7, 14, 19, 22, 15, 4, 23, 27, 28, 23, 1, 29];
+const capHill =         [5, 85, 58, 51, 50, 13, 33, 32, 47, 94, 31, 62];
+const alkiBeach =       [33, 31, 147, 130, 27, 93, 38, 126, 141, 63, 46, 17];
 
 const cookieStores = [firstPike, seaTac, seattleCenter, capHill, alkiBeach];
 
 const grandTotal = (stores) => {
   // Solution code here...
+  const hourlyTotalForAllStores = new Array(hoursOpen.length).fill(0);  //need to fill the output Array with '0s' first otherwise gets NaN result
+  for(let i=0; i < stores.length; i++){
+    for(let j=0; j < stores[i].length; j++){
+      let hourlyTotalPerStore = stores[i][j];
+      hourlyTotalForAllStores[j] += hourlyTotalPerStore;
+    }
+  }
+  return hourlyTotalForAllStores;
+}
 
-};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
@@ -48,10 +65,41 @@ Here is sample data for the 9:00 sales: { sales: '88 cookies', time: '9 a.m.' }.
 
 Write a function named salesData that uses forEach to iterate over the hourlySales array and create an object for each hour. Return an array of the formatted data.
 ------------------------------------------------------------------------------------------------ */
+// expect(salesData(hoursOpen, grandTotal(cookieStores))
+// const hoursOpen = ['9 a.m.', '10 a.m.', '11 a.m.', '12 p.m.', '1 p.m.', '2 p.m.', '3 p.m.', '4 p.m.', '5 p.m.', '6 p.m.', '7 p.m.', '8 p.m.'];
+// grandTotal(cookieStores)[88, 153, 252, 286, 139, 161, 145, 232, 276, 207, 161, 169]
+
+
+// [
+//   { sales: '88 cookies', time: '9 a.m.' },
+//   { sales: '153 cookies', time: '10 a.m.' },
+//   { sales: '252 cookies', time: '11 a.m.' },
+//   { sales: '286 cookies', time: '12 p.m.' },
+//   { sales: '139 cookies', time: '1 p.m.' },
+//   { sales: '161 cookies', time: '2 p.m.' },
+//   { sales: '145 cookies', time: '3 p.m.' },
+//   { sales: '232 cookies', time: '4 p.m.' },
+//   { sales: '276 cookies', time: '5 p.m.' },
+//   { sales: '207 cookies', time: '6 p.m.' },
+//   { sales: '161 cookies', time: '7 p.m.' },
+//   { sales: '169 cookies', time: '8 p.m.' }
+// ]
 
 const salesData = (hours, data) => {
   // Solution code here...
-};
+  const outputArray = [];
+  hours.forEach((hour, index) => {
+      const salesObj = {
+        sales: `${data[index]} cookies`,
+        time: hour
+      }
+      outputArray.push(salesObj);
+    });
+    return outputArray;
+  };
+
+
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
@@ -76,8 +124,37 @@ const errands = [
 
 const howManyTreats = (arr) => {
   // Solution code here...
-};
+    let quantity = 0;
+    const itemsFromStores = arr.forEach(storeObj => {
+      if(storeObj.store === 'Pet store'){
+        const getItems = storeObj.items.forEach(itemObj => {
+          if(itemObj.name === 'Treats') {
+            quantity = itemObj.quantity;
+          };
+          return quantity;
+        });
+      }
+      return quantity;
+    });
+    return quantity;
+  }
 
+
+
+
+  // First attempt: sums up all items across all stores (misread the instructions)
+  // let sumTreats = 0;
+  // const itemsFromStores = arr.forEach(storeObj => {
+  //   const getItems = storeObj.items.forEach(itemObj => {
+  //     sumTreats += itemObj.quantity;
+  //     return sumTreats;
+  //   });
+  //   return sumTreats;
+  // });
+  //   return sumTreats;
+  // }
+
+//Ref: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5 - Stretch Goal
 
