@@ -28,9 +28,9 @@ If the PIN is four numerical digits long, return true. Otherwise, return false.
 const validatePin = (pin) => {
   // Solution code here...
   const stringifiedPin = pin.toString();
-  const pinValidator = /\d{4,4}/g;
+  const pinValidator = /\^d{4}$/gm;
   const pinChecker = stringifiedPin.match(pinValidator);
-  if (stringifiedPin.length < 5 && pinChecker) {
+  if (pinChecker) {
     return true;
   } else {
     return false;
