@@ -109,6 +109,7 @@ const validatePhoneNumber = (phoneNumber) => {
 // key takeaways for using regex:
 // use parenthesis to group arguments that you want to focus/capture
 // breakdown the target/search into sections that can be placed into parenthesis
+// use ^ (beginning) and $ (ending) to to guardrail the target search (e.g. useful when using /d{4} to limit the number to that specific amount - in this example '4' digits) -- ensure that ^ and $ are used with the /gm ending tag (not just /g)
 // when testing using regex tools, use / /gm (global and multiline) to use ^ and $ (at the start and ending, respectively), if there is multiple test scenarios being tested -- to put it more simply, put each test scenario on each individual line and then use /gm (not /g) for the post script setting.
 // ? = different than (?:), it looks at the previous argument and asks a 0 or 1 (boolean) (e.g. whether the argument is true or not -- \(\d{3}\)? accepts BOTH (555) and (555 because it's asking to take situations where there exists the closing parenthesis and ones without it.)
 
